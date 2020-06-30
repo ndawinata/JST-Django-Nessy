@@ -75,7 +75,7 @@
         var tglnow = y + "-" + m + "-" + dd;
 
         function kirimNilai(level, tgl, month) {
-            axios.get('http://localhost:8000/coba/?level=' + level + '&bulan=' + month)
+            axios.get('http://jst-banjir-rob.my.id:8000/coba/?level=' + level + '&bulan=' + month)
                 .then(function (response) {
                     var data = response.data
                     $("#water").val(data.level);
