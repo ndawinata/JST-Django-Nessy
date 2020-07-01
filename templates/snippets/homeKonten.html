@@ -46,7 +46,7 @@
                             </div>
                         </div>
                     </form>
-                    <form action="" method="GET">
+                    <form action="" method="POST">
                         {% csrf_token %}
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Status Potensi Banjir Rob</h5>
@@ -55,24 +55,25 @@
                             <div class="form-group row">
                                 <label for="level" class="col-sm-2 col-form-label">Water Level (m)</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="level" id="level">
+                                    <input type="text" class="form-control" name="level" id="level" value="{{level}}">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="bulan" class="col-sm-2 col-form-label">Bulan (1-12)</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="bulan" id="bulan">
+                                    <input type="text" class="form-control" name="bulan" id="bulan" value="{{bulan}}">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Status</label>
+                                <label for="hasil" class="col-sm-2 col-form-label">Status</label>
                                 <div class="col-sm-10">
-                                    {{hasil}}
+                                    <input type="text" readonly class="form-control-plaintext" id="hasil" name="hasil" value="{{hasil}}">
+                                    <input type="text" readonly class="form-control-plaintext" id="hasil" name="hasil" value="{{cobaa}}">
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="modal-footer">
-                            <button type="reset" class="btn btn-secondary" data-dismiss="modal">Reset</button>
                             <button type="submit" class="btn btn-primary">Periksa</button>
                         </div>
                     </form>

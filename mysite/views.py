@@ -22,6 +22,8 @@ def index(request):
         f = open(file_path, 'rb')
         model = pickle.load(f)
         f.close()
+        context['level'] = request.POST['level']
+        context['bulan'] = request.POST['bulan']
         y_pred = model.predict(np.array([[request.POST['level'],request.POST['bulan']]]))
         if y_pred < 0.5:
             context['hasil'] = "Tidak Berpotensi Banjir ROB"
@@ -48,14 +50,13 @@ def coba(request):
         f.close()
         y_pred = model.predict(np.array([[request.GET['level'],request.GET['bulan']]]))
         if y_pred < 0.5:
-            context['hasil'] = "Tidak Berpotensi Banjir ROB"
+            context['hasilreal'] = "Tidak Berpotensi Banjir ROB"
             context['level'] = request.GET['level']
             context['bulan'] = request.GET['bulan']
         else:
-            context['hasil'] = "Berpotensi Banjir ROB"
+            context['hasilreal'] = "Berpotensi Banjir ROB"
             context['level'] = request.GET['level']
             context['bulan'] = request.GET['bulan']
-        print(context)
     return JsonResponse(context)
 
 def banjir(request):

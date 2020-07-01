@@ -71,7 +71,6 @@
         var detik = d.getUTCSeconds();
         var timenow = jam + ":" + menit + ":" + detik;
         var timelast = (jam - 1) + ":" + menit + ":" + detik;
-        // var level = 20;
         var tglnow = y + "-" + m + "-" + dd;
 
         function kirimNilai(level, tgl, month) {
@@ -80,20 +79,10 @@
                     var data = response.data
                     $("#water").val(data.level);
                     $("#tanggal").val(tgl);
-                    $("#hasilRealtime").val(data.hasil);
+                    $("#hasilRealtime").val(data.hasilreal);
                 })
         }
-
-        function coba() {
-            var url = 'https://cors-anywhere.herokuapp.com/http://202.90.199.132/aws-new/data/station/3000000009/' +
-                tglnow + "/" + timelast + "/" + tglnow + "/" + timenow;
-            axios.get(url)
-                .then(function (response) {
-                    var data = response.data.aaData[response.data.aaData.length - 1]
-                    var waktu = moment().format('D MMMM YYYY, h:mm:ss a');
-                    kirimNilai(data.waterlevel, waktu, moment().format('M'))
-                })
-        }
+        
         var url = 'https://cors-anywhere.herokuapp.com/http://202.90.199.132/aws-new/data/station/3000000009/' +
             tglnow + "/" + timelast + "/" + tglnow + "/" + timenow;
         axios.get(url)
